@@ -1,0 +1,28 @@
+@font-face {
+	font-family: 'ms-reg';
+	src: url('fonts/ms-reg/ms-reg.eot');
+	src: local('☺'), url('fonts/ms-reg/ms-reg.woff') format('woff'), url('fonts/ms-reg/ms-reg.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'ms-med';
+	src: url('fonts/ms-med/ms-med.eot');
+	src: local('☺'), url('fonts/ms-med/ms-med.woff') format('woff'), url('fonts/ms-med/ms-med.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'ms-bold';
+	src: url('fonts/ms-bold/ms-bold.eot');
+	src: local('☺'), url('fonts/ms-bold/ms-bold.woff') format('woff'), url('fonts/ms-bold/ms-med.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'gregor';
+	src: url('fonts/gregor/gregor.eot');
+	src: local('☺'), url('fonts/gregor/gregor.woff') format('woff'), url('fonts/gregor/gregor.ttf') format('truetype'), url('fonts/gregor/gregor.svg') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}

@@ -1,0 +1,197 @@
+@import "colors"
+@import "mixins"
+
+*
+  box-sizing: border-box
+  text-decoration: none
+.container
+  width: 85%
+  margin: 0 auto
+  font-size: em(14)
+  position: relative
+  background: #fff
+
+.user-img
+  border-radius: 50%
+  img
+    width: 100%
+
+.subscr
+  border-radius: 50px
+  display: flex
+  align-items: center
+  position: relative
+  overflow: hidden
+  width: 70px
+  @include transition(1s)
+  &:hover
+    background: $active-color
+    width: 190px
+    .subscr__link
+      left: 80px
+  &__counter
+    position: relative
+    padding: 0px 7px
+    background: #fff
+    border: 2px solid $active-color
+    border-radius: 50px
+    font-size: em(16)
+    color: $active-color
+    font-family: "ms-med"
+    line-height: 1.375
+    z-index: 2
+  &__link
+    position: absolute
+    left: -90px
+    font-size: em(12)
+    font-family: "ms-reg"
+    color: #fff
+    line-height: 1.167
+    @include transition(1s)
+
+.info
+  font-size: em(12)
+  font-family: "ms-med"
+  line-height: 1.167
+  &__date
+    color: $text-color-light
+    margin-right: 10px
+  &__tag
+    color: $active-color
+    text-transform: uppercase
+.more
+  position: absolute
+  color: $active-color
+  font-family: "ms-med"
+  font-size: em(11)
+  bottom: 15px
+  right: 45px
+  opacity: 0
+  @include transition(all 0.5s linear)
+
+.header
+  display: flex
+  border-bottom: 1px solid $grey
+  height: 95px
+
+.main-menu
+  margin: 20px 0
+  &__list
+    display: flex
+    justify-content: center
+  &__link
+    padding: 20px
+    color: $text-color-light
+    border-bottom: 1px solid $grey
+    font-size: em(18)
+    font-family: "ms-med", sans-serif
+    line-height: 1.474
+    cursor: pointer
+    @include transition(color 1s linear)
+  .current
+    color: $active-color
+    border-bottom: 3px solid $active-color
+
+.main-content
+  -moz-columns: 30em
+  -webkit-columns: 30em
+  columns: 30em
+  -moz-column-gap: 0em
+  -webkit-column-gap: 0em
+  column-gap: 0em
+  &__item
+    border: 1px solid $grey
+    -webkit-column-break-inside: avoid
+    page-break-inside: avoid
+    break-inside: avoid
+
+.question-item
+  header
+    padding: 40px 40px 0
+  &__title
+    margin: 18px 0
+    font-size: em(24)
+    font-family: "gregor"
+    font-weight: bold
+    color: $title-color
+    line-height: 1.071
+  &__subtitle
+    margin-bottom: 15px
+    font-size: em(12)
+    font-family: "ms-med"
+    line-height: 1.154
+    color: $text-color-light
+    .answ
+      color: $text-color
+      position: relative
+      padding-right: 15px
+      font-family: "ms-bold"
+      &::after
+        position: absolute
+        content: '•'
+        right: 5px
+        top: 50%
+        transform: translateY(-50%)
+        color: $text-color-light
+  &__header
+    display: flex
+    justify-content: space-between
+    align-items: center
+  &__answer
+    position: relative
+    padding: 0 40px
+    cursor: pointer
+    @include transition(all 0.5s linear)
+    &::after
+      position: absolute
+      content: ''
+      background: url('../img/arrow.png') no-repeat
+      background-size: contain
+      width: 20px
+      height: 50px
+      top: 50%
+      right: 15px
+      transform: translateY(-50%)
+      @include transition(opacity 0.5s linear)
+      opacity: 0
+    &:hover
+      background: $grey-light
+      &::after
+        opacity: 1
+      .more
+        opacity: 1
+
+
+.answer-item
+  padding: 10px 0 10px 40px
+  &__text
+    position: relative
+    font-size: em(15)
+    font-family: "gregor"
+    color: $text-color
+    line-height: 1.38
+    &::before
+      position: absolute
+      content: '— '
+      top: 0
+      left: -25px
+  &__user
+    margin-top: 5px
+    font-family: "ms-med"
+    display: flex
+    align-items: center
+    justify-content: flex-start
+    .user-img
+      width: 40px
+      margin-right: 10px
+    .user-info
+      color: $text-color
+      font-size: em(13)
+      line-height: 1.2
+      &__rate
+        color: $active-color
+        font-size: em(15)
+        font-family: "ms-bold"
+      &__prof
+        color: $text-color-light
+        font-size: em(11)
