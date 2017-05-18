@@ -1,0 +1,203 @@
+@import "colors"
+@import "mixins"
+
+.header
+  display: flex
+  border-bottom: 1px solid $grey
+  position: fixed
+  width: 100%
+  height: 95px
+  top: 0
+  background: #fff
+  z-index: 999999
+  @include bp-tablet
+    flex-wrap: wrap
+    justify-content: flex-start
+    height: auto
+
+
+
+.header-menu
+  flex: 1
+  position: relative
+  width: 105px
+  cursor: pointer
+  @include bp-tablet
+    flex: 1 20%
+    max-width: 20%
+  @include bp-mob
+    flex: 1 30%
+  &__btn
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+    transition: background 750ms ease-in-out
+    user-select: none
+    &:active .hamburger
+      transition: transform 50ms
+      transform: scale(0.95)
+.hamburger
+  position: relative
+  width: 27px
+  height: 23px
+  transition: transform 750ms ease-in-out
+  &::before, &::after, .inner
+    content: ''
+    position: absolute
+    width: 25px
+    height: 3px
+    background: $text-color
+    transform-origin: 100% 50%
+    transition: all 750ms ease-in-out
+  &::before
+    top: -1px
+  .inner
+    top: 9px
+    transform-origin: 50% 50%
+  &::after
+    top: 19px
+.header-menu--open
+  .hamburger
+    transform: rotateY(-180deg)
+  .menu-btn:active .hamburger
+    transform: scale(0.95) rotateY(-180deg)
+  .hamburger
+    &::before, &::after, .inner
+      background: $active-color
+    &::before
+      transform: translate3d(-4px, 1px, 0) rotateZ(-45deg)
+    .inner
+      transform: rotateY(-90deg)
+      transition: transform 375ms, background-color 750ms ease-in-out
+    &::after
+      transform: translate3d(-4px, -1px, 0) rotateZ(45deg)
+
+
+.header-logo
+  padding: 15px
+  flex: 2
+  background: url('../img/logo.png') no-repeat
+  background-size: cover
+  background-position: center
+  height: 100%
+  min-height: 90px
+  @include bp-tablet
+    flex: 1 40%
+  @include bp-mob
+    flex: 1 70%
+    min-height: 120px
+
+
+.header-search
+  padding: 15px
+  flex: 7
+  position: relative
+  @include bp-laptop
+    flex: 2
+    padding: 0 2vw 0 7vw
+  @include bp-tablet
+    height: 90px
+    flex: 1 40%
+  form, input
+    height: 100%
+    width: 100%
+  &__field
+    border: 0
+    outline: none
+    margin: 0
+    padding: 3px 30px 3px 85px
+    font-size: em(16)
+    font-family: "ms-reg"
+    color: $text-color-light
+    @include placeholder
+      color: $text-color-light
+      text-overflow: ellipsis
+      opacity: 1
+      transition: opacity 0.3s ease
+    @include bp-laptop
+      padding: 0
+    @include bp-tablet
+      padding: 3px 5vw 3px 6vw
+      font-size: 90%
+      @include placeholder
+        color: $text-color-light
+        text-overflow: ellipsis
+        opacity: 1
+        transition: opacity 0.3s ease
+    &:focus
+      @include placeholder
+        opacity: 0
+  &__btn
+    position: absolute
+    left: 35px
+    top: 50%
+    transform: translateY(-50%)
+    border: 0
+    outline: none
+    background: url("../img/search.png") no-repeat
+    background-size: contain
+    width: 30px
+    height: 30px
+    text-indent: -99999em
+    cursor: pointer
+    @include bp-laptop
+      left: 2vw
+    @include bp-mob
+      left: 5vw
+      width: 20px
+      height: 20px
+
+
+.header-ask
+  padding: 15px
+  flex: 1
+  background: $title-color
+  display: flex
+  flex-direction: column
+  justify-content: center
+  align-items: center
+  cursor: pointer
+  p
+    color: #fff
+    font-size: em(15)
+    font-family: "ms-med"
+    line-height: 0.824
+    text-align: center
+    &:first-child
+      font-size: em(30)
+  @include bp-tablet
+    p:last-child
+      display: none
+  @include bp-tablet
+    flex: 1 20%
+    max-width: 20%
+
+.header-user
+  padding: 5px 15px
+  flex: 2
+  display: flex
+  justify-content: center
+  align-items: center
+  @include bp-tablet
+    flex: 1 25%
+    max-width: 45%
+  &__img
+    max-width: 85px
+    margin-right: 15px
+    @include bp-mob
+      margin-right: 0
+    img
+      width: 100%
+      border-radius: 50%
+  &__info
+    font-size: em(12)
+    font-family: "ms-med"
+    color: $title-color
+    line-height: 1.167
+    text-align: center
+    @include bp-mob
+      display: none
+    &-rate
+      color: $active-color
+      font-size: em(34)

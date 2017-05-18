@@ -6,14 +6,43 @@ $browser-context: 14
 @function em($pixels, $context: $browser-context)
   @return #{$pixels/$context}em
 
+@mixin transition($args...)
+  transition: $args
 
-@mixin bp-table
+// placeholder
+
+@mixin optional-at-root($sel)
+  @at-root #{if(not &, $sel, selector-append(&, $sel))}
+    @content
+
+@mixin placeholder
+  @include optional-at-root('::-webkit-input-placeholder')
+    @content
+
+  @include optional-at-root(':-moz-placeholder')
+    @content
+
+  @include optional-at-root('::-moz-placeholder')
+    @content
+
+  @include optional-at-root(':-ms-input-placeholder')
+    @content
+
+
+// breakpoints
+
+@mixin bp-laptop
+  @media screen and (max-width: 1024px)
+    @content
+
+@mixin bp-tablet
   @media screen and (max-width: 768px)
     @content
 
-@mixin bp-table-portrait
+@mixin bp-tablet-portrait
   @media screen and (max-width: 768px) and (orientation: portrait)
     @content
 
-@mixin transition($args...)
-  transition: $args
+@mixin bp-mob
+  @media screen and (max-width: 480px)
+    @content

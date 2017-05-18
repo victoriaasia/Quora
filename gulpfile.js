@@ -52,7 +52,7 @@ gulp.task('img', function() {
 });
 
 gulp.task('js', function() {
-  gulp.src(['source/js/jquery.min.js', 'source/js/script.js'])
+  gulp.src(['source/js/jquery.min.js', 'source/js/classie.js', 'source/js/modal.js', 'source/js/script.js'])
     .pipe(concat('script.js'))
     .pipe(gulp.dest('dest/js'))
     .pipe(browserSync.reload({stream:true}))

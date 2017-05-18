@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,11 +11,33 @@
 <div class="wrapper">
 
     <header class="header">
-      <div class="header__menu"></div>
-      <div class="header__logo"></div>
-      <div class="header__quest"></div>
-      <div class="header__find"></div>
-      <div class="header__user"></div>
+      <div class="header-menu js-header-menu">
+        <div class="header-menu__btn" role="button" title="">
+          <div class="hamburger"><div class="inner"></div></div>
+        </div>
+      </div>
+      <a href="" class="header-logo" title="rQuora"></a>
+
+      <div class="header-search">
+        <form method="get" action="">
+          <button type="submit" class="header-search__btn">искать</button>
+          <input type="text" class="header-search__field" placeholder="Найти ответ..." name="s">
+        </form>
+      </div>
+
+      <div class="header-ask">
+        <p>?</p>
+        <p>Задать вопрос</p>
+      </div>
+
+      <a href="" class="header-user">
+        <div class="header-user__img"><img src="assets/img/user.png" alt=""></div>
+        <div class="header-user__info">
+          <p>Рейтинг</p>
+          <p class="header-user__info-rate">7.6</p>
+        </div>
+      </a>
+
     </header>
 
     <div class="container">

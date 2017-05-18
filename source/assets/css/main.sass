@@ -5,30 +5,62 @@
   box-sizing: border-box
   text-decoration: none
 .container
+  position: relative
+  top: 95px
   width: 85%
   margin: 0 auto
+  padding-bottom: 30px
   font-size: em(14)
   position: relative
   background: #fff
-
-.user-img
-  border-radius: 50%
-  img
+  @include bp-laptop
     width: 100%
+  @include bp-tablet
+    top: 170px
+  @include bp-mob
+    top: 220px
+
+.answer-user
+  &__img
+    width: 40px
+    margin-right: 10px
+    img
+      width: 100%
+      border-radius: 50%
+  &__info
+    color: $text-color
+    font-size: em(12)
+    line-height: 1.2
+    @include bp-tablet-portrait
+      font-size: 3.5vw
+    &-rate
+      color: $active-color
+      font-size: em(15)
+      font-family: "ms-bold"
+    &-prof
+      color: $text-color-light
+      font-size: em(10)
+      @include bp-tablet-portrait
+        font-size: 3vw
 
 .subscr
   border-radius: 50px
   display: flex
   align-items: center
   position: relative
-  overflow: hidden
+  // overflow: hidden
   width: 70px
   @include transition(1s)
+  @include bp-laptop
+    width: auto
+    background: $active-color
   &:hover
     background: $active-color
-    width: 190px
+    width: 175px
+    @include bp-laptop
+      width: auto
     .subscr__link
-      left: 80px
+      left: 70px
   &__counter
     position: relative
     padding: 0px 7px
@@ -40,6 +72,8 @@
     font-family: "ms-med"
     line-height: 1.375
     z-index: 2
+    @include bp-laptop
+      display: none
   &__link
     position: absolute
     left: -90px
@@ -48,6 +82,39 @@
     color: #fff
     line-height: 1.167
     @include transition(1s)
+    @include bp-laptop
+      display: block
+      position: static
+      padding: 5% 10px
+
+.reply
+  position: relative
+  display: inline-block
+  width: 100%
+  text-align: center
+  padding: 5px
+  margin: 30px auto 0
+  border-radius: 50px
+  background-image: linear-gradient($active-color, $active-color)
+  background-position: 50% 50%
+  background-repeat: no-repeat
+  background-size: 0% 100%
+  transition: background-size 0.5s
+  span
+    font-size: em(15)
+    font-family: "ms-med"
+    color: $text-color
+    line-height: 1
+    transition: color 0.5s
+  &:hover
+    background-size: 100% 100%
+    @include bp-tablet
+      background-size: 0%
+    span
+      color: #fff
+      @include bp-tablet
+        color: $text-color
+
 
 .info
   font-size: em(12)
@@ -56,6 +123,8 @@
   &__date
     color: $text-color-light
     margin-right: 10px
+    @include bp-laptop
+      margin-right: 3px
   &__tag
     color: $active-color
     text-transform: uppercase
@@ -63,16 +132,12 @@
   position: absolute
   color: $active-color
   font-family: "ms-med"
-  font-size: em(11)
-  bottom: 15px
+  font-size: em(10)
+  bottom: 18px
   right: 45px
   opacity: 0
   @include transition(all 0.5s linear)
 
-.header
-  display: flex
-  border-bottom: 1px solid $grey
-  height: 95px
 
 .main-menu
   margin: 20px 0
@@ -88,18 +153,31 @@
     line-height: 1.474
     cursor: pointer
     @include transition(color 1s linear)
+    @include bp-tablet
+      padding: 2vw
+      font-size: 150%
+    @include bp-mob
+      font-size: 5vw      
   .current
     color: $active-color
     border-bottom: 3px solid $active-color
 
 .main-content
-  -moz-columns: 30em
-  -webkit-columns: 30em
-  columns: 30em
-  -moz-column-gap: 0em
-  -webkit-column-gap: 0em
-  column-gap: 0em
+  -moz-columns: 2
+  -webkit-columns: 2
+  columns: 2
+  -moz-column-gap: 0
+  -webkit-column-gap: 0
+  column-gap: 0
+  display: none
+  @include bp-tablet
+    -moz-columns: 1
+    -webkit-columns: 1
+    columns: 1
+  &.current
+    display: block
   &__item
+    padding: 40px 0
     border: 1px solid $grey
     -webkit-column-break-inside: avoid
     page-break-inside: avoid
@@ -107,7 +185,9 @@
 
 .question-item
   header
-    padding: 40px 40px 0
+    padding: 0 40px
+    @include bp-tablet
+      padding: 0 6vw
   &__title
     margin: 18px 0
     font-size: em(24)
@@ -115,12 +195,16 @@
     font-weight: bold
     color: $title-color
     line-height: 1.071
+    @include bp-tablet-portrait
+      font-size: 6vw
   &__subtitle
     margin-bottom: 15px
     font-size: em(12)
     font-family: "ms-med"
     line-height: 1.154
     color: $text-color-light
+    @include bp-tablet-portrait
+      font-size: 3vw
     .answ
       color: $text-color
       position: relative
@@ -142,6 +226,8 @@
     padding: 0 40px
     cursor: pointer
     @include transition(all 0.5s linear)
+    @include bp-tablet
+      padding: 0 8vw 0 3vw
     &::after
       position: absolute
       content: ''
@@ -152,14 +238,18 @@
       top: 50%
       right: 15px
       transform: translateY(-50%)
-      @include transition(opacity 0.5s linear)
       opacity: 0
+      @include transition(opacity 0.5s linear)
+      @include bp-tablet
+        right: 2vw
     &:hover
       background: $grey-light
       &::after
         opacity: 1
       .more
         opacity: 1
+        @include bp-laptop
+          opacity: 0
 
 
 .answer-item
@@ -169,7 +259,9 @@
     font-size: em(15)
     font-family: "gregor"
     color: $text-color
-    line-height: 1.38
+    line-height: 1.25
+    @include bp-tablet-portrait
+      font-size: 4vw
     &::before
       position: absolute
       content: '— '
@@ -181,17 +273,5 @@
     display: flex
     align-items: center
     justify-content: flex-start
-    .user-img
-      width: 40px
-      margin-right: 10px
-    .user-info
-      color: $text-color
-      font-size: em(13)
-      line-height: 1.2
-      &__rate
-        color: $active-color
-        font-size: em(15)
-        font-family: "ms-bold"
-      &__prof
-        color: $text-color-light
-        font-size: em(11)
+    @include bp-tablet-portrait
+      margin-top: 5%
