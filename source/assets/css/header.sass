@@ -10,11 +10,13 @@
   top: 0
   background: #fff
   z-index: 999999
+  @include transition(top 2s)
   @include bp-tablet
     flex-wrap: wrap
     justify-content: flex-start
     height: auto
-
+  &-up
+    top: -100%
 
 
 .header-menu
@@ -86,7 +88,7 @@
   @include bp-tablet
     flex: 1 40%
   @include bp-mob
-    flex: 1 60%    
+    flex: 1 60%
 
 
 .header-search
