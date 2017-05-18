@@ -38,7 +38,7 @@ function hasScrolled() {
     if(Math.abs(lastScrollTop - st) <= delta)
         return;
     if (st > lastScrollTop && st > navbarHeight){
-        $('header').removeClass('nav-down').addClass('header-up');
+        $('header').removeClass('header-down').addClass('header-up');
     } else {
         if(st + $(window).height() < $(document).height()) {
             $('header').removeClass('header-up').addClass('header-down');
