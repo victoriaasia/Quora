@@ -4,6 +4,12 @@
 *
   box-sizing: border-box
   text-decoration: none
+.wrapper ::-moz-selection
+  background: $title-color
+  color: #fff
+.wrapper ::selection
+  background: $title-color
+  color: #fff
 .container
   position: relative
   top: 95px
@@ -16,7 +22,7 @@
   @include bp-laptop
     width: 100%
   @include bp-tablet
-    top: 170px  
+    top: 170px
 
 .answer-user
   &__img

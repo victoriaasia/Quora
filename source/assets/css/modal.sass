@@ -1,20 +1,94 @@
 @import "colors"
 @import "mixins"
 
+.body-modal
+  position: relative
+
 .md-modal
-  position: fixed
-  top: 200px
+  position: absolute
+  top: 170px
   left: 50%
+  transform: translateY(-50%)
   width: 85%
   height: auto
-  z-index: 2000
   visibility: hidden
   backface-visibility: hidden
   transform: translateX(-50%)
   perspective: 1300px
+  overflow: hidden
+  @include transition(top 1s linear)
+  &__user
+    flex: 1 30%
+  &__question,
+  &__answer
+    border: 0
+    flex: 2 70%
+  @include bp-laptop
+    width: 100%
+  @include bp-tablet
+    top: 200px
+
+.modal-question
+  &__content
+    position: relative
+  &:hover .subscr
+    background: $active-color
+    width: 175px
+    @include bp-laptop
+      width: auto
+    .subscr__link
+      left: 70px
+  &__title
+    margin-top: 10px
+    font-size: em(38)
+    font-family: "gregor"
+    color: $title-color
+    @include bp-tablet-portrait
+      font-size: 6vw
+  &__subtitle
+    margin: 45px 0 55px
+    font-size: em(12)
+    font-family: "ms-med"
+    line-height: 1.45
+    color: $text-color-light
+    @include bp-tablet-portrait
+      font-size: 3vw
+      margin: 5vw 6vw 7vw 0
+    .answ
+      color: $text-color
+      position: relative
+      padding-right: 15px
+      font-family: "ms-bold"
+      &::after
+        position: absolute
+        content: '•'
+        right: 5px
+        top: 50%
+        transform: translateY(-50%)
+        color: $text-color-light
+  &__header
+    display: flex
+    justify-content: space-between
+    align-items: center
+  &__text
+    font-size: em(21)
+    font-family: "gregor"
+    color: $title-color
+    line-height: 1.522
+    p
+      margin: 10px 0 25px
+  &__share
+    position: absolute
+    right: 0
+    top: 0
+    display: flex
+    flex-direction: column
 
 .md-show
+  margin-bottom: 100px
   visibility: visible
+  z-index: 99999
+
 
 .md-overlay
   position: fixed
@@ -23,7 +97,6 @@
   visibility: hidden
   top: 0
   left: 0
-  z-index: 1000
   opacity: 0
   background: #f4f5f6
   -webkit-transition: all 0.3s
@@ -33,18 +106,55 @@
 .md-show ~ .md-overlay
   opacity: 1
   visibility: visible
+  z-index: 9999
 
 .md-content
   background: #fff
   position: relative
-  border-radius: 3px
   margin: 0 auto
-  padding: 30px
   transform-style: preserve-3d
   transform: translateZ(100px) translateX(-30%) rotateY(90deg)
   transform-origin: 0 100%
   opacity: 0
   @include transition(all 0.3s)
+  &__question
+    display: flex
+    padding: 10vw 7vw 2vw
+    @include bp-tablet
+      flex-direction: column
+  &__answer
+    display: flex
+    padding: 6vw 7vw 3vw
+    border-bottom: 1px solid $grey
+    &:last-child
+      border-bottom: 0
+    @include bp-tablet
+      flex-direction: column
+
+.modal-share
+  top: 7px
+  right: -7vw
+  &__link
+    width: 40px
+    height: 40px
+    border-left: 1px solid $grey
+    border-bottom: 1px solid $grey
+    border-right: 0
+    background: #fff url('../img/share.png') no-repeat
+    background-size: 45px
+    @include transition(0.2s linear)
+    &:first-child
+      border-top: 1px solid $grey
+    &:hover
+      background-color: $title-color
+  .vk
+    background-position: 0 -85px
+  .fb
+    background-position: 0 -3px
+  .tw
+    background-position: -3px -45px
+  .ok
+    background-position: 0 -130px
 
 .md-show .md-content
   transform: translateZ(0px) translateX(0%) rotateY(0deg)
@@ -61,3 +171,122 @@
   width: 30px
   height: 30px
   cursor: pointer
+
+
+.modal-user
+  &__link
+    display: block
+    margin: 55px 10px 0 0
+    @include bp-tablet
+      display: flex
+      align-items: center
+      margin: 55px 0 30px
+  &__img
+    width: 80px
+    height: 80px
+    @include bp-tablet
+      width: 12vw
+      height: auto
+    img
+      width: 100%
+      border-radius: 50%
+    @include bp-tablet
+      margin-right: 15px
+    @include bp-mob
+      min-width: 80px
+  &__info
+    margin-top: 15px
+    cursor: pointer
+    @include bp-tablet
+      margin-top: 0
+    .subscr
+      opacity: 0
+      @include transition(opacity 1s linear)
+    &:hover
+      .name
+        color: $title-color
+      .subscr-user
+        opacity: 1
+        @include bp-tablet
+          display: none
+          opacity: 0
+  .name, .prof, .rate
+    font-family: "ms-med"
+    line-height: 1.375
+  .name
+    font-size: em(15)
+    color: $text-color-light
+    @include transition(color 0.5s linear)
+    @include bp-tablet
+      font-size: em(14)
+  .prof
+    font-size: em(9)
+    color: $text-color-light
+    margin: 5px 0
+    @include bp-tablet
+      font-size: em(10)
+  .rate
+    font-size: em(19)
+    color: $active-color
+    @include bp-mob
+      font-size: em(18)
+
+
+.md-menu
+  margin: 20px 0
+  border-bottom: 1px solid $grey
+  &__list
+    display: flex
+    justify-content: center
+  &__link
+    padding: 20px
+    color: $text-color-light
+    border-bottom: 3px solid transparent
+    font-size: em(16)
+    font-family: "ms-reg", sans-serif
+    line-height: 1.474
+    cursor: pointer
+    @include transition(color 1s linear)
+    @include bp-tablet
+      padding: 2vw
+      font-size: 150%
+    @include bp-mob
+      font-size: 5vw
+  .current
+    color: $active-color
+    border-bottom: 3px solid $active-color
+
+.modal-answer
+  &__header
+    display: flex
+    justify-content: space-between
+    align-items: center
+  &__text
+    font-size: em(20)
+    font-family: "gregor"
+    color: $title-color
+    line-height: 1.5
+    p
+      margin: 10px 0 35px
+
+
+.subscr-user
+  margin-top: 5px
+  border-radius: 50px
+  display: inline-block
+  width: auto
+  background: $active-color
+  opacity: 0
+  @include transition(1s linear)
+  @include bp-tablet
+    display: none
+    opacity: 0
+  &__link
+    display: block
+    position: static
+    padding: 7% 12px
+    font-size: em(11)
+    font-family: "ms-reg"
+    color: #fff
+    line-height: 1.167
+    @include transition(1s linear)

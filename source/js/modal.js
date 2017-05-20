@@ -10,7 +10,8 @@ var ModalEffects = (function() {
 				close = modal.querySelector( '.md-close' );
 
 			function removeModal( hasPerspective ) {
-				classie.remove( modal, 'md-show' );
+				classie.remove( modal, 'md-show');
+				$(document.body).removeClass('body-modal');
 
 				if( hasPerspective ) {
 					classie.remove( document.documentElement, 'md-perspective' );
@@ -25,6 +26,9 @@ var ModalEffects = (function() {
 				classie.add( modal, 'md-show' );
 				overlay.removeEventListener( 'click', removeModalHandler );
 				overlay.addEventListener( 'click', removeModalHandler );
+				$(document.body).addClass('body-modal');
+				$('.js-header').removeClass('header-up').addClass('header-down');
+				$('html, body').animate({scrollTop: '0px'}, 700);
 
 				if( classie.has( el, 'md-setperspective' ) ) {
 					setTimeout( function() {

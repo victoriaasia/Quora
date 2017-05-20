@@ -96,7 +96,8 @@ var ModalEffects = (function() {
 				close = modal.querySelector( '.md-close' );
 
 			function removeModal( hasPerspective ) {
-				classie.remove( modal, 'md-show' );
+				classie.remove( modal, 'md-show');
+				$(document.body).removeClass('body-modal');
 
 				if( hasPerspective ) {
 					classie.remove( document.documentElement, 'md-perspective' );
@@ -111,6 +112,9 @@ var ModalEffects = (function() {
 				classie.add( modal, 'md-show' );
 				overlay.removeEventListener( 'click', removeModalHandler );
 				overlay.addEventListener( 'click', removeModalHandler );
+				$(document.body).addClass('body-modal');
+				$('.js-header').removeClass('header-up').addClass('header-down');
+				$('html, body').animate({scrollTop: '0px'}, 700);
 
 				if( classie.has( el, 'md-setperspective' ) ) {
 					setTimeout( function() {
@@ -154,7 +158,9 @@ $('.js-main-menu li').click(function(){
 var didScroll;
 var lastScrollTop = 0;
 var delta = 2;
-var navbarHeight = $('header').outerHeight();
+var navbarHeight = $('.js-header').outerHeight();
+var scroll = $(window).scrollTop();
+
 
 $(window).scroll(function(event){
     didScroll = true;
@@ -171,12 +177,17 @@ function hasScrolled() {
     var st = $(this).scrollTop();
     if(Math.abs(lastScrollTop - st) <= delta)
         return;
-    if (st > lastScrollTop && st > navbarHeight){
-        $('header').removeClass('nav-down').addClass('header-up');
+    if ($('body').hasClass('body-modal')){
+        $('.js-header').removeClass('header-up').addClass('header-down');
     } else {
-        if(st + $(window).height() < $(document).height()) {
-            $('header').removeClass('header-up').addClass('header-down');
-        }
+      if (st > lastScrollTop && st > navbarHeight) {
+          $('.js-header').removeClass('header-down').addClass('header-up');
+      } else {
+          if(st + $(window).height() < $(document).height()) {
+              $('.js-header').removeClass('header-up').addClass('header-down');
+          }
+      }
     }
+
     lastScrollTop = st;
 }
