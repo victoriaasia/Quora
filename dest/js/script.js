@@ -98,6 +98,7 @@ var ModalEffects = (function() {
 			function removeModal( hasPerspective ) {
 				classie.remove( modal, 'md-show');
 				$(document.body).removeClass('body-modal');
+				$('.container').removeClass('container--hidden');
 
 				if( hasPerspective ) {
 					classie.remove( document.documentElement, 'md-perspective' );
@@ -113,6 +114,7 @@ var ModalEffects = (function() {
 				overlay.removeEventListener( 'click', removeModalHandler );
 				overlay.addEventListener( 'click', removeModalHandler );
 				$(document.body).addClass('body-modal');
+				$('.container').addClass('container--hidden');
 				$('.js-header').removeClass('header-up').addClass('header-down');
 				$('html, body').animate({scrollTop: '0px'}, 700);
 
