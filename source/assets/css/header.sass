@@ -24,9 +24,6 @@
   @include bp-tablet
     flex: 1 20%
     max-width: 20%
-  @include bp-mob
-    flex: 1 30%
-    max-width: 30%
   &__btn
     position: absolute
     top: 50%
@@ -113,13 +110,16 @@
     @include bp-laptop
       padding: 0
     @include bp-tablet
-      padding: 3px 5vw 3px 6vw
+      padding: 3px 0 3px 5vw
       font-size: 90%
       @include placeholder
         color: $text-color-light
         text-overflow: ellipsis
         opacity: 1
         transition: opacity 0.3s ease
+    @include bp-tablet
+      @include placeholder
+        opacity: 0
     &:focus
       @include placeholder
         opacity: 0
