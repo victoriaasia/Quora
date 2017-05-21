@@ -20,11 +20,9 @@
   @include transition(top 1s linear)
   @include bp-laptop
     width: 100%
-  @include bp-tablet
-    top: 200px
   &__user
     flex: 1 30%
-    padding: 0 0 0 7vw  
+    padding: 0 0 0 7vw
   &__question,
   &__answer
     border: 0
@@ -80,7 +78,8 @@
     font-family: "gregor"
     color: $title-color
     @include bp-tablet-portrait
-      font-size: 6vw
+      font-size: em(20)
+      margin-right: 5vw
   &__subtitle
     margin: 45px 0 55px
     font-size: em(12)
@@ -88,8 +87,8 @@
     line-height: 1.45
     color: $text-color-light
     @include bp-tablet-portrait
-      font-size: 3vw
-      margin: 5vw 0 7vw 0
+      font-size: em(10)
+      margin: 5vw 5vw 7vw 0
     .answ
       color: $text-color
       position: relative
@@ -111,6 +110,8 @@
     font-family: "gregor"
     color: $title-color
     line-height: 1.522
+    @include bp-tablet-portrait
+      font-size: em(14)
     p
       margin: 10px 0 25px
   &__share
@@ -282,6 +283,8 @@
     font-family: "gregor"
     color: $title-color
     line-height: 1.5
+    @include bp-tablet-portrait
+      font-size: em(14)
     p
       margin: 10px 0 35px
 

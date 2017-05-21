@@ -1,10 +1,15 @@
 // @mixin linear-gradient($args...)
 //   background: linear-gradient($args)
 
+
+// font-size
+
 $browser-context: 14
 
 @function em($pixels, $context: $browser-context)
   @return #{$pixels/$context}em
+
+// transition
 
 @mixin transition($args...)
   transition: $args

@@ -12,10 +12,6 @@
   background: #fff
   z-index: 999999
   @include transition(top 2s)
-  @include bp-tablet
-    flex-wrap: wrap
-    justify-content: flex-start
-    height: auto
   &-up
     top: -100%
 
@@ -87,10 +83,7 @@
   height: 100%
   min-height: 90px
   @include bp-tablet
-    flex: 1 40%
-  @include bp-mob
-    flex: 1 60%
-
+    display: none
 
 .header-search
   padding: 15px
@@ -100,8 +93,7 @@
     flex: 2
     padding: 0 2vw 0 7vw
   @include bp-tablet
-    height: 90px
-    flex: 1 40%
+    flex: 1 30%
   form, input
     height: 100%
     width: 100%
@@ -184,10 +176,12 @@
   align-items: center
   @include bp-tablet
     flex: 1 25%
-    max-width: 45%
+    max-width: 30%
   &__img
     max-width: 85px
     margin-right: 15px
+    @include bp-tablet
+      min-width: 50px
     @include bp-mob
       margin-right: 0
     img
